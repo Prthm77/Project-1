@@ -35,7 +35,7 @@ const ProductListing = () => {
 
   return (
     <div>
-      <h2 className="product-title" >Product Listing</h2>
+      <h1 className="product-title" >Product Listing</h1>
       <div className="product-body">
 
       {loading ? (

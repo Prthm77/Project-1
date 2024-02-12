@@ -29,7 +29,8 @@
 .navbar-text:hover{
 color: var(--darker-c);
 background-color: var(--primary-c);
-border-radius: 10%;
+border-radius: 10px;
+transition: ease 1s;
 }
 
 
@@ -45,13 +46,13 @@ border-radius: 10%;
     background-color: var(--darker-c);
     color: var(--background-c);
     border: 1px solid var(--background-c);
+    transition: ease 0.78s;
 }
 
 @media screen and (max-width: 768px) {
-  .nav-btn {
-      /* Adjust styles for smaller screens */
-      /* padding: 8px 12px; Example padding */
-      margin-left: 10px;
-      font-size: 14px; /* Example font size */
+  .nav-title{
+   
+    color: var(--primary-c);
+    border-radius: 0 ;
   }
 }

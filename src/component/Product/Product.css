@@ -1,12 +1,13 @@
 @import url(../../App.css);
 
 .product-title {
+
   color: var(--secondary-c);
   display: flex;
   justify-content: center;
 
   align-items: center;
-  margin-top: 7px;
+  margin: 15px;
 }
 
 .product-img.img {
@@ -26,6 +27,7 @@
   /* border: 1px solid var(--secondary-c); */
   border-radius: 7px;
   box-shadow: 3px 3px 15px var(--primary-c);
+  background-color: var(--lighter-c);
   padding: 7px;
   margin: 7px;
 }
@@ -36,8 +38,8 @@
 
 .product-btn {
   background-color: var(--background-c);
-  color: var(--darker-c);
-  border: 1px solid var(--darker-c);
+  color: var(--secondary-c);
+  border: 1px solid var(--secondary-c);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,6 +47,7 @@
 
 .product-btn:hover {
   background-color: var(--secondary-c);
+  transform: ease 1.5s;
   color: var(--background-c);
   border: 1px solid var(--background-c);
 }
