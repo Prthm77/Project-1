@@ -1,0 +1,96 @@
+@import url(../../App.css);
+
+.product-title {
+  color: var(--secondary-c);
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+  margin-top: 7px;
+}
+
+.product-img.img {
+  width: 500%;
+  height: 200px;
+  border-radius: 7px;
+}
+
+.product-body{
+    width : 100vw;
+    
+}
+
+.product-card {
+  width: 75%;
+  height: auto;
+  /* border: 1px solid var(--secondary-c); */
+  border-radius: 7px;
+  box-shadow: 3px 3px 15px var(--primary-c);
+  padding: 7px;
+  margin: 7px;
+}
+
+.product-card h3 {
+    margin-top: 10px;
+}
+
+.product-btn {
+  background-color: var(--background-c);
+  color: var(--darker-c);
+  border: 1px solid var(--darker-c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-btn:hover {
+  background-color: var(--secondary-c);
+  color: var(--background-c);
+  border: 1px solid var(--background-c);
+}
+
+
+.product-detail {
+align-items: center;
+    width: fit-content ;
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 7px;
+    color: var(--secondary-c);
+    box-shadow: 5px 5px 15px var(--primary-c);
+    /* border: 1px solid var(--darker-c); */
+    background-color: var(--lighter-c);
+}
+
+
+  
+  @media screen and (max-width: 1199px) {
+  
+    .product-card {
+      width: 80%;
+    }
+    .product-detail{
+        width: 80%;
+    }
+  }
+  
+  @media screen and (max-width: 991px) {
+
+    .product-card {
+      width: 85%;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+   
+    .product-card {
+      width: 90%; 
+    }
+  }
+  
+  @media screen and (max-width: 575px) {
+  
+    .product-card {
+      width: 95%; 
+    }
+  }

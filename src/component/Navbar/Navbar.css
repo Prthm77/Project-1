@@ -1,0 +1,57 @@
+@import url(../../App.css);
+  
+
+
+.navbar-main {
+  background-color: var(--secondary-c);
+  display: flex;
+  justify-content: space-around;
+ 
+ 
+}
+
+.navbar-title {
+   
+  color: var(--primary-c);
+}
+
+.navbar-title:hover {
+  color: var(--primary-c);
+}
+.navbar-body {
+  color: var(--primary-c);
+}
+
+.navbar-text{
+  color: var(--primary-c);
+  font-size: 1.25rem;
+}
+.navbar-text:hover{
+color: var(--darker-c);
+background-color: var(--primary-c);
+border-radius: 10%;
+}
+
+
+.nav-btn {
+    justify-content: end;
+    background-color: var(--background-c);
+    color: var(--darker-c);
+    border: 1px solid var(--darker-c);
+    
+}
+
+.nav-btn:hover{
+    background-color: var(--darker-c);
+    color: var(--background-c);
+    border: 1px solid var(--background-c);
+}
+
+@media screen and (max-width: 768px) {
+  .nav-btn {
+      /* Adjust styles for smaller screens */
+      /* padding: 8px 12px; Example padding */
+      margin-left: 10px;
+      font-size: 14px; /* Example font size */
+  }
+}

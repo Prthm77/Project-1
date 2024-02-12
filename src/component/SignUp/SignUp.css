@@ -1,0 +1,37 @@
+@import url(../../App.css);
+
+.form-title{
+    color: var(--secondary-c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7px;
+}
+
+.form-container {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+  .form-body {
+    background-color: var(--primary-c);
+    margin-top: 7px;
+    /* Vertically center the form */
+    width: 500px;
+    /* border: 1px solid var(--secondary-c); */
+    border-radius: 10px;
+    box-shadow:3px 3px 15px var(--primary-c);
+    padding: 9px;
+  }
+
+.form-btn{
+    background-color: var(--background-c);
+    color: var(--darker-c);
+    border: 1px solid var(--darker-c);
+
+}
+.form-btn:hover{
+    background-color: var(--darker-c);
+    color: var(--background-c);
+    border: 1px solid var(--background-c);
+}
