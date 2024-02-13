@@ -1,0 +1,14 @@
+.home-btn {
+    justify-content: end;
+    background-color: var(--background-c);
+    color: var(--darker-c);
+    border: 1px solid var(--darker-c);
+    
+}
+
+.home-btn:hover{
+    background-color: var(--darker-c);
+    color: var(--background-c);
+    border: 1px solid var(--background-c);
+    transition: ease 0.78s;
+}

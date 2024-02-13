@@ -1,35 +1,37 @@
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import {useNavigate} from 'react-router-dom'
-import './SignUp.css'
+import Modal from 'react-bootstrap/Modal';
+import { useNavigate } from 'react-router-dom';
+import './SignUp.css';
 import * as Yup from 'yup';
-import { useState } from 'react';
+import bcrypt from 'bcryptjs'; // Import bcrypt for password hashing
 
-const SignUp = () => { // Ensure that history is passed as a prop
-const navigateTo = useNavigate();
+const SignUp = () => {
+  const navigateTo = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     password: '',
     cpassword: ''
   });
-
   const [errors, setErrors] = useState({});
+  const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
+
+  const handleCloseModal = () => setShowModal(false); // Function to close modal
 
   const validationSchema = Yup.object().shape({
     fullName: Yup.string().required('Full Name is required'),
     email: Yup.string().required('Email is required').email('Invalid email address'),
     password: Yup.string().required('Password is Required').min(6, 'Password must be at least 6 characters'),
     cpassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match')
-  })
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Submitted');
-
+  
     validationSchema.validate(formData, { abortEarly: false })
       .then(() => {
-        console.log('Validation successful');
         // Check if email already exists
         const users = JSON.parse(localStorage.getItem('users')) || [];
         const existingUser = users.find(user => user.email === formData.email);
@@ -37,13 +39,26 @@ const navigateTo = useNavigate();
           setErrors({ email: 'Email already exists' });
           return;
         }
-
-        users.push(formData);
+  
+        // Hash the password before storing
+        const hashedPassword = bcrypt.hashSync(formData.password, 10);
+  
+        users.push({
+          fullName: formData.fullName,
+          email: formData.email,
+          password: hashedPassword
+        });
         localStorage.setItem('users', JSON.stringify(users));
-        console.log('Form data stored in localStorage');
+        setShowModal(true);
+        setFormData({
+          fullName: '',
+          email: '',
+          password: '',
+          cpassword: ''
+        });
 
-        // Redirect to the product page
-        navigateTo('/product');
+  
+       
       })
       .catch((err) => {
         const newErrors = {};
@@ -53,20 +68,20 @@ const navigateTo = useNavigate();
         setErrors(newErrors);
       });
   };
+  
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
-  }
+  };
 
   return (
     <>
       <h1 className="form-title">Sign Up</h1>
       <div className='container form-container'>
         <Form className='form-body' onSubmit={handleSubmit}>
-
           <Form.Group className="mb-3" controlId="formBasicFullName">
             <Form.Label>Full Name</Form.Label>
             <Form.Control type="text" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="Enter Full Name" />
@@ -96,8 +111,27 @@ const navigateTo = useNavigate();
           </Button>
         </Form>
       </div>
+
+      {/* Modal for showing success message */}
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>User Created</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Your account has been successfully created!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Close
+          </Button>
+          <Button className='form-btn' onClick={() => {
+            navigateTo('/' , { state: { user: formData } }); // Redirect to profile page on modal close
+            handleCloseModal(); // Close modal
+          }}>
+            Go to Profile
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
-  )
-}
+  );
+};
 
 export default SignUp;

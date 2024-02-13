@@ -1,7 +1,9 @@
+import  { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import bcrypt from 'bcryptjs'; 
 
 const Login = () => {
   const navigateTo = useNavigate();
@@ -10,22 +12,25 @@ const Login = () => {
     password: ''
   });
   const [error, setError] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form Data:', formData);
 
     const users = JSON.parse(localStorage.getItem('users')) || [];
-    console.log('Users:', users);
-
-    const user = users.find(user => user.email === formData.email && user.password === formData.password);
-    console.log('Found User:', user);
+    const user = users.find(user => user.email === formData.email);
 
     if (user) {
-      setError('');
-      navigateTo('/profile');
+    
+      const passwordMatch = bcrypt.compareSync(formData.password, user.password);
+      if (passwordMatch) {
+        setError('');
+        setShowModal(true);
+      } else {
+        setError('Invalid email or password');
+      }
     } else {
-      setError('Invalid Info');
+      setError('User not found');
     }
   };
 
@@ -36,10 +41,15 @@ const Login = () => {
     });
   };
 
+  const handleCloseModal = () => {
+    setShowModal(false);
+    navigateTo('/');
+  };
+
   return (
     <>
       <h1 className='form-title'>Login</h1>
-      <div className='container form-container '>
+      <div className='container form-container'>
         <Form className='form-body' onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -58,6 +68,19 @@ const Login = () => {
           {error && <p className="text-danger">{error}</p>}
         </Form>
       </div>
+
+      {/* Modal for showing success message */}
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Login Successful</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>You are successfully logged in!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };
