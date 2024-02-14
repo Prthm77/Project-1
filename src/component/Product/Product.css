@@ -105,6 +105,17 @@
   border-radius: 8px;
 }
 
+@media screen and (max-width: 1393px) {
+
+  .product-card{
+    width: 500px;
+   
+    
+    margin: 10px auto;
+  }
+  
+}
+
 @media screen and (max-width: 991px) {
   .product-card {
     width: 85%;
