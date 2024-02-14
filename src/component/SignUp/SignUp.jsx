@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 import './SignUp.css';
 import * as Yup from 'yup';
-import bcrypt from 'bcryptjs'; // Import bcrypt for password hashing
+import bcrypt from 'bcryptjs';
 
 const SignUp = () => {
   const navigateTo = useNavigate();
@@ -16,9 +16,9 @@ const SignUp = () => {
     cpassword: ''
   });
   const [errors, setErrors] = useState({});
-  const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
+  const [showModal, setShowModal] = useState(false); 
 
-  const handleCloseModal = () => setShowModal(false); // Function to close modal
+  const handleCloseModal = () => setShowModal(false); 
 
   const validationSchema = Yup.object().shape({
     fullName: Yup.string().required('Full Name is required'),
@@ -123,8 +123,8 @@ const SignUp = () => {
             Close
           </Button>
           <Button className='form-btn' onClick={() => {
-            navigateTo('/' , { state: { user: formData } }); // Redirect to profile page on modal close
-            handleCloseModal(); // Close modal
+            navigateTo('/' , { state: { user: formData } }); 
+            handleCloseModal();
           }}>
             Go to Profile
           </Button>

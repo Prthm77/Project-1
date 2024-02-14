@@ -11,7 +11,7 @@ const ViewProduct = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  // const currentPage = sessionStorage.getItem('currentPage');
+
 
   useEffect(() => {
     console.log("id", id);

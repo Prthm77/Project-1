@@ -16,7 +16,7 @@
   .form-body {
     background-color: var(--primary-c);
     margin-top: 7px;
-    /* Vertically center the form */
+  
     width: 500px;
     /* border: 1px solid var(--secondary-c); */
     border-radius: 10px;
