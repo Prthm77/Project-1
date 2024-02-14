@@ -1,4 +1,4 @@
-import Profile from "../Profile/Profile"
+// import Profile from "../Profile/Profile"
 import logo from '../../../public/logo.png'
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
@@ -21,7 +21,7 @@ const Home = () => {
   </div>
   <div className="my-3">
 
-    <Profile />
+    {/* <Profile /> */}
   </div>
     
     </>

@@ -37,7 +37,7 @@ const ProductListing = () => {
 
   return (
     <div>
-      <h1 className="product-title">Products  </h1>
+      <h1 className="product-title">Products</h1>
       <div style={{ display: "flex", justifyContent: "center" }}>
 
       <div className="product-body" style={{ marginLeft: "9px" }}>
@@ -63,7 +63,7 @@ const ProductListing = () => {
         <a
           className="page-link page-btn"
           onClick={handlePrevPage}
-          disabled={page === 1}
+          disabled={page === 1 ? 'true' : ''}
           style={{ marginRight: "10px" }} 
         >
           Previous
