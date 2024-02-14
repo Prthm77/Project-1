@@ -13,34 +13,7 @@ const Navbar1 = () => {
   return (
     <>
       <div className="navbar-body">
-        {/* <Navbar className="navbar-main" expand="lg">
-          <Container fluid>
-          <Navbar.Brand className="navbar-title" as={Link} to="/">
- 
-            Project-1
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link className="navbar-text" as={Link} to="/">
-                <FaHome className="nav-icon" /> Home
-              </Nav.Link>
-            <Nav.Link className="navbar-text" as={Link} to="/">
-                <FaHome className="nav-icon" /> Home
-              </Nav.Link>
       
-            </Nav>
-            <Nav className="navbar-right">
-              <Button as={Link} to="/signup" className="mx-1 nav-btn" type="submit">
-                <FaUser className="nav-icon" /> SignUp
-              </Button>
-              <Button as={Link} className="nav-btn" to="/login">
-                <FaSignInAlt className="nav-icon" /> Login
-              </Button>
-            </Nav>
-          </Navbar.Collapse>
-          </Container>  
-        </Navbar> */}
           <Navbar expand="lg" className="navbar-main bg-body-tertiary">
       <Container fluid>
         <Navbar.Brand href="#"><img style={{width : "100px"}} src={logo} /></Navbar.Brand>
@@ -60,12 +33,15 @@ const Navbar1 = () => {
         
            
           </Nav>
-          <Button as={Link} to="/signup" className="mx-1 nav-btn" type="submit">
+          <div className="button-container">
+
+          <Button as={Link} to="/signup" className=" nav-btn" type="submit">
                 <FaUser className="nav-icon" /> SignUp
               </Button>
               <Button as={Link} className="nav-btn" to="/login">
                 <FaSignInAlt className="nav-icon" /> Login
               </Button>
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>

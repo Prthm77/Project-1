@@ -1,9 +1,12 @@
 @import url(../../App.css);
   
 
+.navbar-body{
+  background-color: var(--background-c);
+}
 
 .navbar-main {
-  background-color: var(--background-c);
+  /* background-color: var(--background-c); */
   border-bottom: 1px solid var(--darker-c);
   display: flex;
   justify-content: space-around;
@@ -40,6 +43,7 @@ transition: ease 1s;
 .nav-btn {
     justify-content: end;
     background-color: var(--background-c);
+    margin-left: 3px;
     color: var(--darker-c);
     border: 1px solid var(--darker-c);
     
@@ -61,7 +65,14 @@ transition: ease 1s;
   .navbar-text{
     text-align: center;
   }
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
   .nav-btn{
-    margin: 2px;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+    
   }
 }

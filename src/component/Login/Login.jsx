@@ -69,7 +69,7 @@ const Login = () => {
         </Form>
       </div>
 
-      {/* Modal for showing success message */}
+  
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>Login Successful</Modal.Title>

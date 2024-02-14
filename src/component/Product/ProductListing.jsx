@@ -37,7 +37,7 @@ const ProductListing = () => {
 
   return (
     <div>
-      <h1 className="product-title">Product Listing</h1>
+      <h1 className="product-title">Products  </h1>
       <div style={{ display: "flex", justifyContent: "center" }}>
 
       <div className="product-body" style={{ marginLeft: "9px" }}>
@@ -55,31 +55,13 @@ const ProductListing = () => {
       </div>
       </div>
 
-      {/* <div className=" product-btn-container row   mt-3">
-        <Button
-          className="col-1 nav-btn "
-          onClick={handlePrevPage}
-          disabled={page === 1}
-        >
-          Previous
-        </Button>
-        <span className="col-10 text-center">
-          Page {page} of {totalPages}
-        </span>
-        <Button
-          className="col-1 nav-btn "
-          onClick={handleNextPage}
-          disabled={page === totalPages}
-        >
-          Next
-        </Button>
-      </div> */}
+    
     <div className="mt-3">
   <nav aria-label="Page navigation example">
     <ul className="pagination justify-content-center">
       <li className="page-item ">
         <a
-          className="page-link nav-btn"
+          className="page-link page-btn"
           onClick={handlePrevPage}
           disabled={page === 1}
           style={{ marginRight: "10px" }} 
@@ -94,7 +76,7 @@ const ProductListing = () => {
       </li>
       <li className="page-item">
         <a
-          className="page-link nav-btn"
+          className="page-link page-btn"
           onClick={handleNextPage}
           disabled={page === totalPages}
           style={{ marginLeft: "10px" }} 

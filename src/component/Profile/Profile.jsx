@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import bcrypt from "bcryptjs";
 import "./Profile.css";
 
 const Profile = () => {
@@ -27,9 +28,14 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const updatedUser = { ...formData }; // Copying the formData
-    delete updatedUser.cpassword; // Removing the cpassword field from updated user data
-    localStorage.setItem("loggedInUser", JSON.stringify(updatedUser)); // Update loggedInUser in local storage
+    const updatedUser = { ...formData }; 
+    delete updatedUser.cpassword; 
+
+
+    const hashedPassword = bcrypt.hashSync(updatedUser.password, 10);
+    updatedUser.password = hashedPassword;
+
+    localStorage.setItem("loggedInUser", JSON.stringify(updatedUser));
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const updatedUsers = users.map(user => {
       if (user.email === formData.email) {
@@ -37,8 +43,13 @@ const Profile = () => {
       }
       return user;
     });
-    localStorage.setItem("users", JSON.stringify(updatedUsers)); // Update users in local storage
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
     alert("Profile updated successfully!");
+    setFormData({
+      ...updatedUser,
+      password: "",
+      cpassword: "",
+    });
   };
 
   return (
